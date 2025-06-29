@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen Video</title>
+    <link rel="stylesheet" href="Maria.css">
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="video-container">
+    <video autoplay loop muted playsinline class="background-video">
+        <source src="imagez/school acticities vidio.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+  
+    
+</div>
+
+
+
+
+<section class="message-section">
+    <div class="message-box">
+        <h2 class="heading">Welcome to Our school activities</h2>
+        <div class="text-content">
+            <p>At les choeur d'anger, we emphasize the development of the whole person, including intellectual, emotional, social, and physical growth. This approach continues into high school, where extracurricular activities, community service, and life skills are integrated into the curriculum.</p>
+            <p>This creates a learning environment that is designed to empower students to take ownership of their education.</p>
+
+        </div>
+    </div>
+    
+</section>
+
+<h1>Life at Les choeur d'anger</h1>
+
+<div class="gallery" id="galleryContainer"></div>
+
+<!-- Modal -->
+<div class="modal" id="imageModal">
+  <div class="modal-content">
+    <div class="modal-buttons">
+      <button id="closeBtne">×</button>
+    </div>
+    <div class="modal-nav">
+      <button id="prevBtn">&lt;</button>
+      <button id="nextBtn">&gt;</button>
+    </div>
+    <img id="modalImage" src="" alt="Modal Image">
+  </div>
+</div>
+
+<script>
+  const images = [
+    'imagez/school activities.jpg',
+    'imagez/school activities1.jpg',
+     'imagez/schoool activities2.jpg',
+  'imagez/1.jpg',
+  'imagez/2.jpg',
+  'imagez/main1.jpg',
+  'imagez/main2.jpg',
+  'imagez/main3.jpg',
+  'imagez/school activities1.jpg',
+    // ...
+  ];
+
+  const galleryContainer = document.getElementById('galleryContainer');
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  const closeBtne = document.getElementById('closeBtne'); // <- FIXED ID
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  let currentIndex = 0;
+
+  function showModal(index) {
+    modal.style.display = 'flex';
+    modalImg.src = images[index];
+    currentIndex = index;
+  }
+
+  function populateGallery() {
+    images.forEach((src, index) => {
+      const box = document.createElement('div');
+      box.className = 'gallery-box';
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `Image ${index + 1}`;
+
+      box.addEventListener('click', () => showModal(index));
+      box.appendChild(img);
+      galleryContainer.appendChild(box);
+    });
+  }
+
+  closeBtne.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    modalImg.src = images[currentIndex];
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    modalImg.src = images[currentIndex];
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  populateGallery();
+</script>
+
+
+
+<iframe src="FOOTER.HTML" width="100" height="100"></iframe>
+
+<script src="Maria.js" defer></script>
+
+</body>
+</html>

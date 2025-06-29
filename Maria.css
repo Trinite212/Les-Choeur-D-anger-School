@@ -1,0 +1,545 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Make video fill the screen */
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+/* Video Container */
+.video-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Video Style */
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    object-fit: cover; /* This makes sure the video covers everything nicely */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Background styling */
+.message-section {
+    background-color: #e6f7ff; /* Light blue background */
+    padding: 40px 0; /* Increased padding for more space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Message box styling */
+.message-box {
+    background-color: #a02116; /* Dark red box */
+    color: white;
+    width: 70%;
+    max-width: 900px;
+    padding: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Added shadow for depth */
+}
+
+/* Heading styling - moves to the left */
+.heading {
+    font-size: 2rem;
+    font-weight: bold;
+    width: 30%;
+    text-align: left;
+}
+
+/* Paragraph text styling */
+.text-content {
+    width: 70%;
+}
+
+/* Increase font size and line height for paragraphs */
+.text-content p {
+    font-size: 1.2rem; /* Adjust this value as needed */
+    line-height: 1.5; /* Adjust line height for better readability */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .message-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .heading, .text-content {
+        width: 100%;
+        text-align: center;
+    }
+
+    .heading {
+        margin-bottom: 15px;
+    }
+}
+
+p.special {
+    font-size: 2rem; /* Adjusted font size for visibility */
+    font-weight: bold; /* Makes the text bold */
+    color: #b8860b; /* Dark yellow color */
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  h1 {
+    
+    color: #072b71;
+    margin: 40px 0 20px;
+    text-align: center;
+  }
+  
+
+
+
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 40px 0 20px;
+}
+
+.gallery-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.gallery-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 123, 255, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 10px;
+}
+
+.gallery-box:hover::before {
+  opacity: 1;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 85%;
+}
+
+.modal-content img {
+  width: 100%;
+  max-height: 80vh;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.modal-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.modal-buttons button {
+  background: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.modal-buttons button:hover,
+.modal-nav button:hover {
+  background-color: #007BFF; /* Bootstrap blue or your preferred shade */
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.modal-nav button {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+  margin: 0 10px;
+}
+
+@media (max-width: 992px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Fixed Navbar */
+nav {
+  background-color: white;
+  padding: 60px 60px;
+  color: black;
+  position: static;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  
+
+
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  text-transform: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Push page content below navbar */
+.page-content {
+  padding-top: 60px; /* Must match navbar height */
+}
+
+/* Nav Layout */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links li a {
+  color: rgb(14, 3, 3);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-links li a:hover {
+  color: green;
+}
+
+/* Desktop alignment */
+@media (min-width: 769px) {
+  .nav-container {
+    justify-content: center;
+    position: relative;
+  }
+
+  .logo {
+    position: absolute;
+    left: -30px;
+  }
+
+  .nav-links {
+    justify-content: baseline;
+  }
+
+  .close-btn {
+    display: none;
+  }
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  background: black;
+  height: 3px;
+  width: 25px;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 500px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    width: 95%;
+    height: 100vh;
+    padding: 100px 100px;
+    background-color: rgb(245, 239, 239);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+    padding: 15px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+    width: 100%;         
+  }
+
+  .nav-links li:hover {
+    background-color: pink;
+  }
+
+  .nav-links li a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: block;
+  }
+
+  .nav-links li a:hover {
+    color: white;
+  }
+
+  .close-btn {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: black;
+    cursor: pointer;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
