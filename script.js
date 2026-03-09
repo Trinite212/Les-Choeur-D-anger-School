@@ -122,32 +122,61 @@ window.addEventListener("scroll", function () {
 
 
 
-const classDetails = {
-  "Nursery One": "Our Nursery One class focuses on sensory play, basic motor skills, and social interaction in a safe, colorful environment.",
-  "Nursery Two": "In Nursery Two, children begin exploring language, basic numbers, and creative arts through interactive group activities.",
-  "Nursery Three": "Nursery Three prepares students for Primary school with a focus on early literacy, logic puzzles, and leadership skills."
+
+// Data for the items
+const classMaterials = {
+  "Nursery One": {
+    desc: "Sensory-based learning focusing on play and motor skills.",
+    items: [
+      { name: "Crayons", icon: "fa-palette" },
+      { name: "Scribble Pad", icon: "fa-book-open" },
+      { name: "Apron", icon: "fa-shirt" }
+    ]
+  },
+  "Nursery Two": {
+    desc: "Introduction to phonics, numbers, and creative expression.",
+    items: [
+      { name: "Pencils", icon: "fa-pencil" },
+      { name: "Workbook", icon: "fa-book" },
+      { name: "Eraser", icon: "fa-eraser" }
+    ]
+  },
+  "Nursery Three": {
+    desc: "Preparing children for primary school with advanced literacy.",
+    items: [
+      { name: "School Bag", icon: "fa-bag-shopping" },
+      { name: "Story Books", icon: "fa-lines-leaning" },
+      { name: "Lunch Box", icon: "fa-box" }
+    ]
+  }
 };
 
 const modal = document.getElementById("classModal");
-const modalTitle = document.getElementById("modalTitle");
-const modalDesc = document.getElementById("modalDescription");
 const closeBtn = document.querySelector(".close-btn");
 
-// Select all "Know More" buttons
-document.querySelectorAll(".btnn").forEach(button => {
-  button.addEventListener("click", function(e) {
+document.querySelectorAll(".btnn").forEach(btn => {
+  btn.addEventListener("click", function(e) {
     e.preventDefault();
-    // Get the class name from the h3 next to the button
-    const className = this.parentElement.querySelector("h3").innerText;
-    
-    modalTitle.innerText = className;
-    modalDesc.innerText = classDetails[className];
+    const className = this.previousElementSibling.innerText; // Gets "Nursery One"
+    const data = classMaterials[className];
+
+    document.getElementById("modalTitle").innerText = className;
+    document.getElementById("modalDescription").innerText = data.desc;
+
+    // Clear and build the boxes
+    const list = document.getElementById("essentialsList");
+    list.innerHTML = "";
+    data.items.forEach(item => {
+      list.innerHTML += `
+        <div class="essential-item">
+          <i class="fa-solid ${item.icon}"></i>
+          <span>${item.name}</span>
+        </div>`;
+    });
+
     modal.style.display = "block";
   });
 });
 
-// Close modal when clicking 'x' or outside the box
 closeBtn.onclick = () => modal.style.display = "none";
-window.onclick = (event) => {
-  if (event.target == modal) modal.style.display = "none";
-};
+window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; };
