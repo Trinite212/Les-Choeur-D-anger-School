@@ -110,3 +110,44 @@ window.addEventListener("scroll", function () {
 
   observer.observe(document.querySelector(".stats"));
 
+
+
+
+
+
+
+
+
+
+
+
+
+const classDetails = {
+  "Nursery One": "Our Nursery One class focuses on sensory play, basic motor skills, and social interaction in a safe, colorful environment.",
+  "Nursery Two": "In Nursery Two, children begin exploring language, basic numbers, and creative arts through interactive group activities.",
+  "Nursery Three": "Nursery Three prepares students for Primary school with a focus on early literacy, logic puzzles, and leadership skills."
+};
+
+const modal = document.getElementById("classModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDescription");
+const closeBtn = document.querySelector(".close-btn");
+
+// Select all "Know More" buttons
+document.querySelectorAll(".btnn").forEach(button => {
+  button.addEventListener("click", function(e) {
+    e.preventDefault();
+    // Get the class name from the h3 next to the button
+    const className = this.parentElement.querySelector("h3").innerText;
+    
+    modalTitle.innerText = className;
+    modalDesc.innerText = classDetails[className];
+    modal.style.display = "block";
+  });
+});
+
+// Close modal when clicking 'x' or outside the box
+closeBtn.onclick = () => modal.style.display = "none";
+window.onclick = (event) => {
+  if (event.target == modal) modal.style.display = "none";
+};
